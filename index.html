@@ -1,253 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Marksheet</title>
 
-    <style>
-        body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #4b6cb7, #182848);
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      min-height: 100vh;
-    }
-    button {
-      width: 100%;
-      padding: 1px;
-      background-color: deeppink;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      margin-bottom: 30px;
-    }
-    button:hover {
-      background-color: #182848;
-    }
-    input,
-    select,
-    textarea {
-      padding: 10px;
-      border: 2px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-      box-sizing: border-box;
-      width: 100%;
-    }
-    textarea {
-      resize: vertical;
-    }
-    .container {
-      background-color: lightpink;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      width: 100%;
-      max-width: 800px;
-    }
-    .text-box {
-      text-align: left;
-      color: white;
-      background-color: blue;
-      margin-bottom: 20px;
-      border: 2px;
-      border-radius: 5px;
-      width: 100%;
-    }
-      .formgroup {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        margin-bottom: 20px;
-      }
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-      .table-container {
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      table {
-        width: max-content;
-        border-collapse: collapse;
-        background-color: white;
-      }
-
-      th,
-      td {
-        padding: 8px 12px;
-        border: 1px solid red;
-        white-space: nowrap;
-      }
-
-      .error-message {
-        color: red;
-        font-size: 0.9em;
-        margin-top: 5px;
-        min-height: 1em;
-      }
-      .row {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    </style>
-  </head>
-
-  <body>
+<body>
     <div class="container">
         <div class="text-box">
-    <h2>Student Marksheet</h2>
-</div>
-    <form id="form">
-        <div class="row">
-      <div class="formgroup">
-        <label for="name">student name:</label>
-        <input type="text" id="name" name="name" placeholder="enter name" />
-        <div class="error-message" id="namerror"></div>
-
-        <label for="mark">mark:</label>
-        <input type="text" id="mark" name="mark" placeholder="enter mark" />
-        <div class="error-message" id="markerror"></div>
-
-        
-        
+            <h2>Student Marksheet</h2>
         </div>
-<div class="formgroup">
-        <button type="submit" id="registerBtn">submit</button>
+        <form id="form">
+            <div class="row">
+                <div class="formgroup">
+                    <label for="name">student name:</label>
+                    <input type="text" id="name" name="name" placeholder="enter name" />
+                    <div class="error-message" id="namerror"></div>
 
-        <button type="reset">clear form</button>
-      </div>
+                    <label for="mark">mark:</label>
+                    <input type="text" id="mark" name="mark" placeholder="enter mark" />
+                    <div class="error-message" id="markerror"></div>
+
+
+
+                </div>
+                <div class="formgroup">
+                    <button type="submit" id="registerBtn">submit</button>
+
+                    <button type="reset">clear form</button>
+                </div>
+            </div>
+        </form>
     </div>
-    </form>
-</div>
-    <script>
-         let editTableRow = null;
-      document.addEventListener("DOMContentLoaded", function (e) {
-        let nameErrorSelector = document.getElementById("namerror");
 
-        function validatename() {
-          let Name = document.getElementById("name").value;
-          if (Name === " ") {
-            nameErrorSelector.textContent = "name cannot be empty";
-            return false;
-          } else if (Name.trim().length < 3) {
-            nameErrorSelector.textContent =
-              " name mustbe at least 3 characters";
-            return false;
-          } else {
-            nameErrorSelector.textContent = " ";
-            return true;
-          }
-        }
-        document.getElementById("name").addEventListener("input", validatename);
 
-        let markErrorSelector = document.getElementById("markerror");
+    <div class="table-container">
+        <table style="width: 100%" id="dataTable">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>mark</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
-        function validatemark() {
-          let Mark = document.getElementById("mark").value;
-          if (Mark === " ") {
-            markErrorSelector.textContent = " mark cannot be empty";
-            return false;
-          } else if (Mark > 100) {
-            markErrorSelector.textContent = "please enter valid mark";
-            return false;
-          } else {
-            markErrorSelector.textContent = " ";
-            return true;
-          }
-        }
-        document.getElementById("mark").addEventListener("input", validatemark);
 
-        function addOrUpdateRow(formData) {
-          const table = document
-            .getElementById("dataTable")
-            .querySelector("tbody");
-          let row;
+    <script src="script.js"></script>
+</body>
 
-          if (editTableRow) {
-            //update existing row
-            row = editTableRow;
-
-            Object.values(formData).forEach((value, index) => {
-              row.cells[index].innerText = value;
-            });
-          } else {
-            //add new row
-            row = table.insertRow();
-            Object.values(formData).forEach((value) => {
-              const cell = row.insertCell();
-              cell.innerText = value;
-            });
-            const actionCell = row.insertCell();
-
-            const editBtn = document.createElement("button");
-            editBtn.textContent = "edit";
-            editBtn.addEventListener("click", function () {
-              editTableRow = row;
-
-              const keys = Object.keys(formData);
-              keys.forEach((key, index) => {
-                document.getElementById(key).value = row.cells[index].innerText;
-              });
-              document.getElementById("registerBtn").textContent = "update";
-            });
-            actionCell.appendChild(editBtn);
-
-            actionCell.appendChild(document.createElement("br"));
-
-            const delBtn = document.createElement("button");
-            delBtn.textContent = "delete";
-            delBtn.addEventListener("click", function () {
-              table.removeChild(row);
-              if (editTableRow === row) {
-                editTableRow = null;
-                document.getElementById("registerBtn").textContent = "register";
-                document.getElementById("form").reset();
-              }
-            });
-            actionCell.appendChild(delBtn);
-          }
-
-          document.getElementById("form").reset();
-          document.getElementById("registerBtn").textContent = "register";
-          editTableRow = null;
-        }
-        document
-          .getElementById("form")
-          .addEventListener("submit", function (e) {
-            e.preventDefault();
-            let Name = document.getElementById("name").value.trim();
-            let Mark = document.getElementById("mark").value;
-
-            let formData = {
-              name: Name,
-              mark: Mark,
-            };
-            addOrUpdateRow(formData);
-          });
-      });
-    </script>
-
-<div class="table-container">
-    <table style="width: 100%" id="dataTable">
-      <thead>
-        <tr>
-          <th>name</th>
-          <th>mark</th>
-          <th>action</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  </body>
 </html>

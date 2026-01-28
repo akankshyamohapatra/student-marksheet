@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+button {
+  width: 100%;
+  padding: 1px;
+  background-color: deeppink;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 30px;
+}
+button:hover {
+  background-color: #182848;
+}
+input,
+select,
+textarea {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+textarea {
+  resize: vertical;
+}
+.container {
+  background-color: lightpink;
+  padding: 30px 40px;
+  border: 10px solid green;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 800px;
+  padding: 50px;
+  margin: 20px;
+}
+.text-box {
+  text-align: left;
+  color: white;
+  background-color: blue;
+  margin-bottom: 20px;
+  border: 2px;
+  border-radius: 5px;
+  width: 100%;
+}
+.formgroup {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: max-content;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th,
+td {
+  padding: 8px 12px;
+  border: 1px solid red;
+  white-space: nowrap;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+  min-height: 1em;
+}
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
