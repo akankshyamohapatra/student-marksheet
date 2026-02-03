@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>layout1</title>
+
+<style>
+   *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    background-color: black;
+    font-family: Arial, sans-serif;
+    min-height: 100vh; 
+    width:90%;
+    max-width: 412px;
+    justify-content: center;
+    align-items: center;
+  } 
+  
+  h1{
+    color: white;
+    font-size: 65px;
+    font-weight: 10000;
+    font-family: 'Geist Sans', sans-serif;
+    margin:20px;
+  }
+  p{
+    color: yellow;
+    margin:20px;
+  }
+  hr{
+    margin:20px;
+   height: 5px;
+   background-color: darkorange;
+  }
+  .v-line{
+width: 20px;
+height: 380px;
+background-color: darkorange;
+margin:20px;
+  }
+  .row{
+    display: flex;
+    flex-direction: row;
+  }
+  .container{
+background-color: black;
+width:100%;
+border: 5px solid darkorange;
+padding:20px;
+margin: 5px;
+max-width: 1200px;
+height: 380px;
+  }
+  h2{
+    color: white;
+    font-family: 'Geist Sans', sans-serif;
+    font-size: 36px;
+  }
+  .small{
+    background-color: black;
+    width: 100px;
+    border:2px  solid darkorange;
+    padding: 8px,24px;
+    margin: 0px;
+    height:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .small:hover{
+    background-color: orange;
+  }
+  h3{
+    color: white;
+    font-family: 'Geist Sans', sans-serif; 
+    font-size: 25px;
+    margin:20px;
+  }
+  .container1{
+background-color:lightslategray;
+width:99%;
+border:2px solid lightslategray;
+padding: 1px;
+margin: 20px;
+height:400px ;
+max-width: 400px;
+display: flex;
+align-items: flex-end;
+justify-content: center;
+  }
+  .container1 div{
+    background-color: black;
+    width: 400px;
+    margin: 0 px;
+    padding: 0 px;
+
+  }
+  .container1:hover{
+    border-color: darkorange;
+  }
+
+  @media (min-width:768px) and (max-width:1024px){
+    
+  }
+</style>
+
+
+
+</head>
+<body>
+
+<h1>EDITORIAL</h1>
+
+<p>Issue 001 - 2024</p>
+
+<hr>
+
+<div class="row">
+<div class="v-line"></div>
+<div class="container">
+<p style="margin: 0px; margin-bottom:20px;">FEATURED STORY</p>
+<h2 style="margin-bottom:20px;">The Future of Magazine Design</h2>
+<p style="color: lightslategray; margin: 0px;margin-bottom:20px; ">Complex nested flexbox layouts showcase editorial excellence with sophisticated typography and strategic spacing.</p>
+<div class="row">
+<div class="small">
+<p>READ</p>
+</div>
+<p style="color: lightslategray; ">Est. 8 min read</p>
+</div>
+</div>
+</div>
+
+<hr>
+
+<p>SPOTLIGHT</p>
+
+<h3>Design Trends</h3>
+
+<p style="color: lightslategray;">Modern editorial approaches.</p>
+
+<hr>
+
+<p>LATEST</p>
+
+<h3>Typography 2024</h3>
+
+<p style="color: lightslategray;">Font pairings and hierarchy.</p>
+
+<div class="container1">
+<div>
+    <p>DESIGN</p>
+    <h3 style="font-size: 16px;">The Art of Responsive Design</h3>
+    <p style="color: lightslategray;">Sarah Chen • Jan 28</p>
+    <p style="color: lightslategray; font-size: 12px;">7 min read</p>
+</div>
+</div>
+
+<div class="container1">
+<div>
+    <p>CODE</p>
+    <h3 style="font-size: 16px;">Mastering CSS Flexbox Layouts</h3>
+    <p style="color: lightslategray;">Mike Johnson • Jan 27</p>
+    <p style="color: lightslategray; font-size: 12px;">12 min read</p>
+</div>
+</div>
+
+<div class="container1">
+    <div>
+        <p>DESIGN</p>
+        <h3 style="font-size: 16px;">Typography in Modern Web</h3>
+        <p style="color: lightslategray;">Emma Davis • Jan 26</p>
+        <p style="color: lightslategray; font-size: 12px;">9 min read</p>  
+    </div>
+</div>
+
+<div class="container1">
+    <div>
+        <p>ACCESSIBILITY</p>
+        <h3 style="font-size: 16px;">Building Accessible Components</h3>
+        <p style="color: lightslategray;">Alex Martinez • Jan 25</p>
+        <p style="color: lightslategray; font-size: 12px;">10 min read</p>  
+    </div>
+</div>
+
+</body>
+</html>
